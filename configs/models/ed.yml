@@ -1,0 +1,29 @@
+model:
+
+  arch: ed
+  z_dim: &HD_DIM 512
+
+  feature_extraction:
+    arch: resnet18
+    pretrained: False
+    maxpool: 1
+    activation: relu
+
+  readout:
+    arch: cosine_circ_conv
+    codebook:
+      init: FPE
+      load: False
+      trainable: False
+      pos_delta: 0.4
+      plot_similarity: False
+
+training:
+  optimizer:
+    lr: 0.001
+
+data:
+  training:
+    batch_size: 2048
+  testing:
+    batch_size: 4096

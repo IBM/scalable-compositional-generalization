@@ -1,0 +1,17 @@
+model:
+  arch: resnet152
+  pretrained: True
+  emb_dim: 512
+  maxpool: 1
+  out_activation: linear
+  activation: relu
+
+training:
+  optimizer:
+    lr: 0.0001
+
+data:
+  training:
+    batch_size: 2048
+  testing:
+    batch_size: 4096

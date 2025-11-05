@@ -1,0 +1,16 @@
+model:
+  arch: convnext_small
+  pretrained: False
+  block: CNBlock
+
+training:
+  optimizer:
+    name: adamw
+    weight_decay: 0.001
+    lr: 0.001
+
+data:
+  training:
+    batch_size: 2048
+  testing:
+    batch_size: 5096

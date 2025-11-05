@@ -1,0 +1,83 @@
+data:
+  training:
+    dataset: mpi3d
+    path: data/mpi3d/real.npz
+    targets:
+    split_attributes:
+    split: interpolation
+    split_difficulty: 1
+    train: True
+    shuffle: True
+    batch_size: 1024
+    downsample: 0
+    val_fraction: 0.1
+    num_workers: 1
+    attributes: &ATT
+      - name: color
+        out_dim: 6
+        var: 0.2
+      - name: shape
+        out_dim: 6
+        var: 1.0
+      - name: size
+        out_dim: 2
+        var: 0.2
+      - name: height
+        out_dim: 3
+        var: 0.2
+      - name: bgcolor
+        out_dim: 3
+        var: 0.2
+      - name: x-axis
+        out_dim: 40
+        var: 0.2
+      - name: y-axis
+        out_dim: 40
+        var: 0.2
+  testing:
+    dataset: ${data.training.dataset}
+    path: ${data.training.path}
+    targets: ${data.training.targets}
+    split_attributes: ${data.training.split_attributes}
+    split: ${data.training.split}
+    split_difficulty: ${data.training.split_difficulty}
+    train: False
+    shuffle: False
+    batch_size: 2048
+    downsample: 0
+    num_workers: 1
+    attributes: *ATT
+
+model:
+
+  preprocessing:
+    - arch: augmentator
+      train:
+        - name: resize
+          size: 64
+          antialias: True
+#        - name: padding
+#          padding: 5
+#          fill: 0
+#        - name: rand_crop
+#          size: 64
+#          fill: 0
+#        - name: rand_rotation
+#          degrees: 25
+#          fill: 0
+        - name: gauss_blur
+          kernel_size: [ 23, 23 ]
+          sigma: 0.2
+      test:
+        - name: resize
+          size: 64
+          antialias: True
+#        - name: rand_rotation
+#          degrees: 25
+#          fill: 0
+        - name: gauss_blur
+          kernel_size: [ 23, 23 ]
+          sigma: 0.2
+
+  feature_extraction:
+    in_channels: 3

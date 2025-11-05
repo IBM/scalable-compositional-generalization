@@ -1,0 +1,16 @@
+model:
+  arch: mlp
+  in_features:
+  l_hidden: [ 90, 90, 90, 90, 45, 22]
+  activation: [ 'relu', 'relu', 'relu', 'relu', 'relu', 'relu' ]
+  out_activation: 'linear'
+
+training:
+  optimizer:
+    lr: 0.001
+
+data:
+  training:
+    batch_size: 2048
+  testing:
+    batch_size: 5096

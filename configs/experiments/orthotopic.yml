@@ -1,0 +1,16 @@
+training:
+  trainer: base
+  fp-16: True
+  n_epoch: 50
+  verbose: True
+  checkpointing: False
+  log_steps: 5
+  optimizer:
+    name: adamw
+  objective: classification
+  loss:
+    name: cross_entropy
+  metrics:
+    - name: multi_accuracy
+  if_exists: retrain
+  selection_metric: wio_acc

@@ -1,0 +1,16 @@
+model:
+  pretrained: False
+  emb_dim: 512
+  maxpool: 1
+  out_activation: linear
+  activation: relu
+
+training:
+  optimizer:
+    lr: 0.001
+
+data:
+  training:
+    batch_size: 256
+  testing:
+    batch_size: 8192

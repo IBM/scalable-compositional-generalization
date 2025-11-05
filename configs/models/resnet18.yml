@@ -1,0 +1,17 @@
+model:
+  arch: resnet18
+  pretrained: False
+  emb_dim: 512
+  maxpool: 1
+  out_activation: linear
+  activation: relu
+
+training:
+  optimizer:
+    lr: 0.001
+
+data:
+  training:
+    batch_size: 5096
+  testing:
+    batch_size: 8192

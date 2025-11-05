@@ -1,0 +1,72 @@
+data:
+  training:
+    dataset: cars3d
+    path: data/cars3d
+    targets:
+    split_attributes:
+    split: composition
+    split_difficulty: 0.1
+    train: True
+    shuffle: True
+    batch_size: 1024
+    downsample: 0
+    val_fraction: 0.1
+    num_workers: 1
+    attributes: &ATT
+      - name: orientation
+        out_dim: 24
+        var: 0.2
+      - name: elevation
+        out_dim: 4
+        var: 0.2
+      - name: type
+        out_dim: 183
+        var: 1
+  testing:
+    dataset: ${data.training.dataset}
+    path: ${data.training.path}
+    targets: ${data.training.targets}
+    split_attributes: ${data.training.split_attributes}
+    split: ${data.training.split}
+    split_difficulty: ${data.training.split_difficulty}
+    train: False
+    shuffle: False
+    batch_size: 2048
+    downsample: 0
+    num_workers: 1
+    attributes: *ATT
+
+training:
+  n_epoch: 500
+
+model:
+  preprocessing:
+    - arch: augmentator
+      train:
+        - name: resize
+          size: 64
+          antialias: True
+#        - name: padding
+#          padding: 5
+#          fill: 1
+#        - name: rand_crop
+#          size: 64
+#        - name: rand_rotation
+#          degrees: 10
+#          fill: 1
+#        - name: gauss_blur
+#          kernel_size: [ 23, 23 ]
+#          sigma: 0.2
+      test:
+        - name: resize
+          size: 64
+          antialias: True
+#        - name: rand_rotation
+#          degrees: 10
+#          fill: 1
+#        - name: gauss_blur
+#          kernel_size: [ 23, 23 ]
+#          sigma: 0.2
+
+  feature_extraction:
+    in_channels: 3

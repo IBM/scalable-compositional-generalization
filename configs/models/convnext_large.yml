@@ -1,0 +1,14 @@
+model:
+  arch: convnext_large
+  pretrained: False
+  block: CNBlock
+
+training:
+  optimizer:
+    lr: 0.001
+
+data:
+  training:
+    batch_size: 1024
+  testing:
+    batch_size: 5096

@@ -1,0 +1,16 @@
+seed: 0
+path:
+  base: out/
+  full: ''
+logger:
+  name: wandb
+  project: visgen
+  group: ''
+training:
+  trainer: base
+  fp-16: True
+  n_epoch: 100
+  log_steps: 10
+  optimizer:
+    name: 'adam'
+    lr: 0.0001

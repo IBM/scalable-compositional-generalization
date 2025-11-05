@@ -1,0 +1,19 @@
+model:
+  arch: split_resnet
+  pretrained: False
+  emb_dim: 512
+  maxpool: 1
+  out_activation: linear
+  activation: relu
+  split_layers: 0
+  exit_reg: 10
+
+training:
+  optimizer:
+    lr: 0.001
+
+data:
+  training:
+    batch_size: 2048
+  testing:
+    batch_size: 4096

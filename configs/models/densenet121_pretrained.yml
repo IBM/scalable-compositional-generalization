@@ -1,0 +1,13 @@
+model:
+  arch: densenet121
+  pretrained: True
+
+training:
+  optimizer:
+    lr: 0.0001
+
+data:
+  training:
+    batch_size: 2048
+  testing:
+    batch_size: 5096
