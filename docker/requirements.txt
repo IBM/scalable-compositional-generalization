@@ -13,7 +13,7 @@ seaborn==0.13.2
 setuptools==68.0.0
 torch==2.3.0
 torchvision==0.18.0
-tqdm==4.66.1
+tqdm==4.66.3
 wandb==0.19.3
 debugpy
 tensorboard
