@@ -1,4 +1,4 @@
-dataframe_image==0.2.4
+dataframe_image==0.2.7
 h5py
 matplotlib
 numpy==1.26.0
