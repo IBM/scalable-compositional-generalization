@@ -4,7 +4,7 @@ matplotlib
 numpy==1.26.0
 omegaconf==2.3.0
 opencv_python==4.8.1.78
-ortools==9.10.4067
+ortools==9.15.6755
 pandas==2.2.3
 Pillow==11.1.0
 PyYAML==6.0.2
